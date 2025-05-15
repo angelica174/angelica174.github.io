@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoVida - Reciclaje Sostenible</title>
+    <style>
+        /* Paleta de colores armónicos basada en tonos verdes y azules */
+        :root {
+            --primary-color: #2E8B57; /* Verde mar */
+            --secondary-color: #3CB371; /* Verde medio */
+            --accent-color: #20B2AA; /* Verde mar claro */
+            --light-color: #F5FFFA; /* Menta */
+            --dark-color: #1E3D33; /* Verde oscuro */
+            --complementary: #8B2E62; /* Magenta oscuro (complementario) */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Menú de navegación */
+        nav {
+            background-color: var(--dark-color);
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Bloques principales */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Secciones */
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Bloques de información */
+        .info-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .info-block {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .info-block:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-block img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .info-content {
+            padding: 1.5rem;
+        }
+        
+        .info-content h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        /* Formulario de contacto */
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Video responsive */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Hosting y Dominio */
+        .hosting-info {
+            background-color: var(--light-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">EcoVida</div>
+        <p>Transformando residuos en recursos</p>
+    </header>
+    
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#como-reciclar">Cómo Reciclar</a></li>
+            <li><a href="#centros">Centros de Reciclaje</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Sección Hero (Home) -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Reciclar hoy para un mañana mejor</h1>
+                <p>Únete a nuestra comunidad comprometida con el medio ambiente y aprende cómo pequeñas acciones pueden generar grandes cambios.</p>
+                <a href="#como-reciclar" class="btn">Aprende a Reciclar</a>
+            </div>
+        </section>
+        
+        <!-- Sección Beneficios -->
+        <section id="beneficios" class="section">
+            <h2 class="section-title">Beneficios del Reciclaje</h2>
+            <p>El reciclaje es una de las acciones más efectivas que podemos tomar para reducir nuestro impacto ambiental. Estos son algunos de sus principales beneficios:</p>
+            
+            <div class="info-blocks">
+                <div class="info-block">
+                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c1936?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ahorro de energía">
+                    <div class="info-content">
+                        <h3>Ahorro de Energía</h3>
+                        <p>Fabricar productos con materiales reciclados consume menos energía que hacerlo con materias primas vírgenes. Por ejemplo, reciclar aluminio ahorra hasta un 95% de la energía necesaria para producirlo nuevo.</p>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <img src="https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Reducción de contaminación">
+                    <div class="info-content">
+                        <h3>Reducción de Contaminación</h3>
+                        <p>El reciclaje disminuye la cantidad de residuos que terminan en vertederos o incineradoras, reduciendo así la emisión de gases de efecto invernadero y la contaminación del aire, agua y suelo.</p>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Conservación de recursos">
+                    <div class="info-content">
+                        <h3>Conservación de Recursos</h3>
+                        <p>Reciclar ayuda a preservar los recursos naturales como árboles, minerales y agua, reduciendo la necesidad de extraer nuevas materias primas y protegiendo los ecosistemas naturales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Cómo Reciclar -->
+        <section id="como-reciclar" class="section">
+            <h2 class="section-title">Cómo Reciclar Correctamente</h2>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OagTXWfaXEo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <h3>Guía básica de separación:</h3>
+            <ul>
+                <li><strong>Contenedor azul:</strong> Papel y cartón (cajas, periódicos, revistas, folios)</li>
+                <li><strong>Contenedor amarillo:</strong> Envases de plástico, latas y briks (botellas, bolsas, latas de conserva)</li>
+                <li><strong>Contenedor verde:</strong> Vidrio (botellas, frascos, tarros)</li>
+                <li><strong>Contenedor marrón:</strong> Residuos orgánicos (restos de comida, plantas)</li>
+                <li><strong>Contenedor gris:</strong> Resto (productos no reciclables)</li>
+                <li><strong>Puntos limpios:</strong> Pilas, electrodomésticos, muebles, aceite usado</li>
+            </ul>
+            
+            <div class="hosting-info">
+                <h3>Nuestro compromiso con la tecnología verde</h3>
+                <p>Esta página web está alojada en servidores ecológicos que utilizan energía renovable. Nuestro dominio .eco refleja nuestro compromiso con la sostenibilidad no solo en el reciclaje, sino también en nuestra presencia digital.</p>
+            </div>
+        </section>
+        
+        <!-- Sección Centros de Reciclaje -->
+        <section id="centros" class="section">
+            <h2 class="section-title">Centros de Reciclaje Cercanos</h2>
+            <p>Encuentra el punto de reciclaje más cercano a tu ubicación:</p>
+            
+            <div class="info-blocks">
+                <div class="info-block">
+                    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Punto limpio">
+                    <div class="info-content">
+                        <h3>Punto Limpio Central</h3>
+                        <p><strong>Dirección:</strong> Calle Ecológica, 123</p>
+                        <p><strong>Horario:</strong> Lunes a Sábado, 8:00 - 20:00</p>
+                        <p><strong>Materiales aceptados:</strong> Electrónicos, muebles, pilas, aceite, textiles</p>
+                        <a href="#" class="btn">Ver en mapa</a>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <img src="https://images.unsplash.com/photo-1601001815894-4bb6c81416f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Reciclaje barrio">
+                    <div class="info-content">
+                        <h3>Estación de Reciclaje Norte</h3>
+                        <p><strong>Dirección:</strong> Avenida Sostenible, 456</p>
+                        <p><strong>Horario:</strong> Todos los días, 7:00 - 22:00</p>
+                        <p><strong>Materiales aceptados:</strong> Papel, vidrio, plástico, metal, orgánico</p>
+                        <a href="#" class="btn">Ver en mapa</a>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Reciclaje electrónico">
+                    <div class="info-content">
+                        <h3>Centro de Reciclaje Electrónico</h3>
+                        <p><strong>Dirección:</strong> Plaza Tecnológica, 789</p>
+                        <p><strong>Horario:</strong> Martes a Viernes, 10:00 - 18:00</p>
+                        <p><strong>Materiales aceptados:</strong> Ordenadores, móviles, electrodomésticos, baterías</p>
+                        <a href="#" class="btn">Ver en mapa</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Contacto -->
+        <section id="contacto" class="section">
+            <h2 class="section-title">Contacta con Nosotros</h2>
+            
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Asunto:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div style="margin: 1rem;">
+                    <h3>Otras formas de contacto:</h3>
+                    <p><strong>Teléfono:</strong> +34 123 456 789</p>
+                    <p><strong>Email:</strong> info@ecovida.eco</p>
+                </div>
+                
+                <div style="margin: 1rem;">
+                    <h3>Síguenos en redes sociales:</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">▶️</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre EcoVida</h3>
+                <p>Somos una organización comprometida con la educación ambiental y la promoción del reciclaje como herramienta para un desarrollo sostenible.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#como-reciclar">Guía de Reciclaje</a></li>
+                    <li><a href="#centros">Centros de Reciclaje</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 EcoVida. Todos los derechos reservados. Hosting ecológico con energía renovable.</p>
+        </div>
+    </footer>
+</body>
+</html>
